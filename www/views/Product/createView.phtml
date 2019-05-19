@@ -1,0 +1,27 @@
+<h1><?= $title ?></h1>
+
+<form method="POST" enctype="multipart/form-data">
+    <label>Nom du produit</label>
+    <input type="text" name="productName" id="productName">
+    <label>Description du produit</label>
+    <textarea name="description" id="description"  ></textarea>
+    <label>Catégory</label>
+    <input type="text" name="category" id="category" >
+    <label >Prix d'achat</label>
+    <input type="text" name="buyPrice">
+    <label>Prix de vente</label>
+    <input type="text" name="sellingPrice">
+    <label for="image">image</label>
+    <input type="file" name="image">
+    <label for="labo">laboratoire</label>
+
+
+    <select id="labo" name="laboratoire">
+    <?php foreach($allLabo as $labo): ?>
+        <option value="<?=$labo['nameLabo']?>" ><?=$labo['nameLabo']?></option>
+        <?php endforeach; ?>
+        <option value="autre">autre</option>
+    </select>
+    <input type="submit" value="valider">
+
+</form>

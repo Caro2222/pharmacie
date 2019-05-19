@@ -1,0 +1,16 @@
+<h1><?=$title ?></h1>
+<?= var_dump($allProducts) ?>
+<table>
+    <?php foreach ($allProducts as $product): ?>
+    <tr>
+        <td><?= $product['productName'] ?></td>
+       <td> <?= $product['laboratoire'] ?></td>
+        <td><?= $product['category'] ?></td>
+       <td> <?= $product['sellingPrice'] ?></td>
+        <td> <img src="<?= $router->getWwwPath() ?>/upload/<?=$product['image'] ?>" ></td>
+        <td><a href="<?=$router->generatePath("pharmacie_product_showOne")?>?id=<?=$product['id'] ?>">Voir plus</a></td>
+        <td><a href="<?=$router->generatePath("pharmacie_product_update")?>?id=<?=$product['id'] ?>">Modifier le produit</a></td>
+
+    </tr>
+    <?php endforeach;?>
+</table>

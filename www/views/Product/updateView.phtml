@@ -1,0 +1,36 @@
+<h1><?= $title?></h1>
+<?= var_dump($product) ?>
+<form method="POST" enctype="multipart/form-data" action="<?=$router->generatePath("pharmacie_product_update")?>">
+    <label>Nom du produit</label>
+    <input type="text" name="productName" id="productName" value="<?=htmlspecialchars($product['productName']) ?>">
+    <label>Description du produit</label>
+    <textarea name="productDescription" id="description"  ><?=htmlspecialchars($product['productDescription']) ?></textarea>
+    <label>Catégory</label>
+    <input type="text" name="category" id="category" value="<?= htmlspecialchars($product['category']) ?> " >
+    <label >Prix d'achat</label>
+    <input type="text" name="buyPrice" value="<?=htmlspecialchars($product['buyPrice']) ?>">
+    <label>Prix de vente</label>
+    <input type="text" name="sellingPrice" value="<?= htmlspecialchars($product['sellingPrice']) ?>">
+    <label for="image">image</label>
+    <?php if($product['image']): ?>
+        <img src="<?= $router->getWwwPath() ?>/upload/<?=$product['image'] ?> ">
+        <input type="checkbox" name="img_suppr">
+        <label>Supprimer l'image</label>
+    <?php else : ?>
+        <p>Pas encore d'image</p>
+    <?php endif; ?>
+    <label for="image">Url de la photo</label>
+    <input type="file" name="image" value="<?=htmlspecialchars($product['image']) ?>">
+    <label for="labo">laboratoire</label>
+
+
+    <select id="labo" name="laboratoire">
+        <?php foreach($allLabo as $labo): ?>
+            <option value="<?=$labo['nameLabo']?>" ><?=$labo['nameLabo']?></option>
+        <?php endforeach; ?>
+        <option value="autre">autre</option>
+    </select>
+    <input name="id"  value="<?=$product['id']?>" hidden="hidden">
+    <input type="submit" value="valider">
+
+</form>
